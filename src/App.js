@@ -15,6 +15,9 @@ const StyledTextField = styled(TextField)({
   },
   '& .MuiFilledInput-root.Mui-focused': {
     backgroundColor: '#fff'
+  },
+  '& .MuiFilledInput-root.Mui-error': {
+    color: 'red'
   }
 });
 
@@ -105,6 +108,7 @@ export default function App() {
               variant="filled"
               size="small"
               color="secondary"
+              error={submitted && !passwordMatch}
               fullWidth
               label="Password"
               type="password"
@@ -117,7 +121,8 @@ export default function App() {
               margin="dense"
               variant="filled"
               size="small"
-              color={passwordMatch ? 'secondary' : 'error'}
+              color={submitted && !passwordMatch ? 'error' : 'secondary'}
+              error={submitted && !passwordMatch}
               fullWidth
               label="Confirm Password"
               type="password"
